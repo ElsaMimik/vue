@@ -5,7 +5,7 @@ const webpack = require('webpack')
 
 module.exports = {
     entry: {
-        home: './Scripts/src/home/index.js'
+        home: './Scripts/src/home/index.ts'
     },
     output: {
         path: path.resolve(__dirname, './Bundle'),
@@ -13,7 +13,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.ts', '.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': path.resolve(__dirname, './Scripts/src')
@@ -29,7 +29,16 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                exclude: /node_modules/,
                 include: [path.resolve(__dirname, './Scripts')]
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                }
             }
         ]
     },
