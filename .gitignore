@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Vue-Testing-DotNet-3/Vue-Testing-DotNet-3/Scripts/src/home/index.js
+/Vue-Testing-DotNet-3/Vue-Testing-DotNet-3/Scripts/src/home/index.js.map
