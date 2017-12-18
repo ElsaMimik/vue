@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vue-Testing-DotNet-3", "Vue-Testing-DotNet-3\Vue-Testing-DotNet-3.csproj", "{CE96B1CE-1DAE-45F1-BB3A-BBB0E072E68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webpack.Service", "Webpack.Service\Webpack.Service.csproj", "{44C18677-2EB9-4E34-9747-E938834AC349}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE96B1CE-1DAE-45F1-BB3A-BBB0E072E68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE96B1CE-1DAE-45F1-BB3A-BBB0E072E68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE96B1CE-1DAE-45F1-BB3A-BBB0E072E68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE96B1CE-1DAE-45F1-BB3A-BBB0E072E68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C18677-2EB9-4E34-9747-E938834AC349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C18677-2EB9-4E34-9747-E938834AC349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C18677-2EB9-4E34-9747-E938834AC349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C18677-2EB9-4E34-9747-E938834AC349}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3ABD0951-6F00-4040-9B0D-D9ADC32D1312}
+	EndGlobalSection
+EndGlobal
