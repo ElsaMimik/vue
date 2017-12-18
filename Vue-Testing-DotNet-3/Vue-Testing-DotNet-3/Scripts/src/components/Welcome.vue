@@ -11,7 +11,7 @@
         name: 'Welcome',
         data() {
             return {
-                userName: 'alpha 1'
+                userName: 'alpha 2'
             }
         }
     }
