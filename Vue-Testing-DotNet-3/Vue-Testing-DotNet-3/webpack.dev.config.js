@@ -33,7 +33,7 @@ module.exports = {
                 include: [path.resolve(__dirname, './Scripts')]
             },
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/,
                 options: {
