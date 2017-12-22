@@ -94,6 +94,8 @@
     <Content Include="Bundle\home.js" />
     <Content Include="Global.asax" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="webpack.dev.config.js" />
   </ItemGroup>
@@ -133,7 +135,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\src\vue-shim.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\vue-module.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -7,12 +7,24 @@
 </template>
 
 <script lang="ts">
-    export default {
-        name: 'Welcome',
-        data() {
-            return {
-                userName: 'alpha 2'
-            }
+
+    class WelcomeModel {
+        userName: string;
+        constructor(name: string) {
+            this.userName = name;
         }
     }
+
+    class ComponentModel {
+        name: string;
+        constructor(compName: string) {
+            this.name = compName;
+        }
+        data() {
+            return new WelcomeModel('alpha');
+        }
+    }
+
+    export default new ComponentModel('Welcome');
+
 </script>

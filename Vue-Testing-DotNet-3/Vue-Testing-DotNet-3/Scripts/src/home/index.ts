@@ -1,8 +1,16 @@
 ﻿import Vue from 'vue'
+import VueResource from 'vue-resource'
 import Welcome from '@/components/Welcome.vue'
 
-let v = new Vue({
-    el: '#app',
-    template: '<Welcome/>',
-    components: { Welcome }
-})
+class VueModel {
+    el: string;
+    template: string;
+    components: {};
+}
+
+let model = new VueModel();
+model.el = '#app';
+model.template = '<Welcome/>';
+model.components = { Welcome };
+
+new Vue(model);
