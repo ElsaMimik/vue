@@ -11,7 +11,7 @@ please install the following items to build the environment:
     ```
     2.2. [dot net framework 4.7.1 dev pack](https://www.microsoft.com/en-us/download/details.aspx?id=56119)
 
-    2.3. nodejs v9.3.1
+    2.3. nodejs v9.3.0
     2.4. nodejs module: webpack
         ```cmd
         npm install webpack -g
