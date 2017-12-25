@@ -19,8 +19,8 @@
 
     //AxiosResponse is optional
     import axios, { AxiosResponse } from 'axios'
-    //EventBus is used to communicate between different module 
-    import EventBus from '../EventBus'
+    //EventBus is used to communicate between different module
+    import EventBus from '../event-bus'
 
     interface IResponse {
         UserName: string;

@@ -107,7 +107,7 @@
     <Content Include="Bundle\home.js" />
     <Content Include="Global.asax" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
-    <TypeScriptCompile Include="Scripts\src\EventBus.ts" />
+    <TypeScriptCompile Include="Scripts\src\event-bus.ts" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />

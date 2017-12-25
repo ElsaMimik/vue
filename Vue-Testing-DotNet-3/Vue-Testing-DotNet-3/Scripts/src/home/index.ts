@@ -1,5 +1,5 @@
 ﻿import Vue from 'vue'
-import EventBus from '../EventBus'
+import EventBus from '../event-bus'
 import Welcome from '@/components/Welcome.vue'
 import MemberInfo from '@/components/MemberInfo.vue'
 
