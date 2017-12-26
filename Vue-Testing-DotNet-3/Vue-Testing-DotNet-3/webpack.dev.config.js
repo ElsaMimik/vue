@@ -9,7 +9,7 @@ module.exports = {
         login: './Scripts/src/home/login.ts'
     },
     output: {
-        path: path.resolve(__dirname, './Bundle'),
+        path: path.resolve(__dirname, 'Bundle'),
         filename: '[name].js',
         publicPath: '/'
     },
@@ -50,11 +50,38 @@ module.exports = {
             },
             {
                 test: /\.css?$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                 use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    'sass-loader'
+                ]
             },
             { 
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
-                loader: 'file-loader' 
+                test: /\.png$/, 
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '/Bundle/',
+                    outputPath: 'png/'
+                }  
+            },
+            { 
+                test: /\.svg/, 
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '/Bundle/',
+                    outputPath: 'svg/'
+                }  
+            },
+            { 
+                test: /\.(woff|woff2|eot|ttf)$/, 
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '/Bundle/',
+                    outputPath: 'fonts/'
+                }  
             }
         ]
     },

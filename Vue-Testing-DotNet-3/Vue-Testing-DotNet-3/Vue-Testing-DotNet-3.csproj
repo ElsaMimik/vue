@@ -105,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bundle\home.js" />
+    <Content Include="Bundle\login.js" />
+    <Content Include="Bundle\svg\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
     <TypeScriptCompile Include="Scripts\src\event-bus.ts" />
@@ -129,12 +131,19 @@
     <Content Include="package.json" />
     <None Include=".babelrc" />
     <Content Include="Bundle\home.js.map" />
+    <Content Include="Bundle\login.js.map" />
+    <Content Include="Bundle\fonts\fontawesome-webfont.eot" />
+    <Content Include="Bundle\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Bundle\fonts\fontawesome-webfont.woff" />
+    <Content Include="Bundle\fonts\fontawesome-webfont.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\src\components\Welcome.vue" />
     <Content Include="tsconfig.json" />
     <Content Include="Scripts\src\components\MemberInfo.vue" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Scripts\src\components\Login.vue" />
+    <Content Include="Scripts\src\assert\custom.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,7 +154,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\src\assert\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Webpack.Service\Webpack.Service.csproj">

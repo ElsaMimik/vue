@@ -75,11 +75,3 @@
     }
 
 </script>
-
-<style>
-
-    .aaa {
-        background-color: black;
-    }
-
-</style>
