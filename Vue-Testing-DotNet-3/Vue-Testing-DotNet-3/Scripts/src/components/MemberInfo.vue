@@ -12,6 +12,9 @@
         <div>
             Ip: <span>{{member.ip}}</span>
         </div>
+        <div>
+            Now: <span>{{dateNow}}</span>
+        </div>
     </div>
 </template>
 
@@ -22,24 +25,18 @@
     //EventBus is used to communicate between different module
     import EventBus from '../event-bus'
 
-    interface IResponse {
-        UserName: string;
-        LoginId: string;
-        Age: number;
-        Ip: string
-    }
-
     class Member {
+
         userName: string;
         loginId: string;
         age: number;
         ip: string;
 
         constructor() {
-            this.userName = 'default';
-            this.loginId = 'empty';
+            this.userName = 'waiting...';
+            this.loginId = 'waiting...';
             this.age = 0;
-            this.ip = '...';
+            this.ip = 'waiting...';
         }
 
         //AxiosResponse can be replaced by any
@@ -57,13 +54,19 @@
         }
     }
 
-    let member = new Member()
+    let member = new Member();
 
     EventBus.$on('init', function (userName) {
         member.init(userName);
-    })
+    });
 
     export default {
+        props: {
+            dateNow: {
+                type: Date,
+                default: new Date()
+            }
+        },
         data() {
             return {
                 member: member
@@ -72,3 +75,11 @@
     }
 
 </script>
+
+<style>
+
+    .aaa {
+        background-color: black;
+    }
+
+</style>

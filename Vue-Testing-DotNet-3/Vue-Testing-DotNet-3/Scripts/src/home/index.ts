@@ -1,5 +1,7 @@
 ﻿import Vue from 'vue'
+//EventBus is used to communicate between different module
 import EventBus from '../event-bus'
+//reference components as following
 import Welcome from '@/components/Welcome.vue'
 import MemberInfo from '@/components/MemberInfo.vue'
 
@@ -20,6 +22,6 @@ model.components = {
     MemberInfo
 };
 
-EventBus.$emit('init', 'alpha')
+EventBus.$emit('init', 'alpha');
 
 new Vue(model);

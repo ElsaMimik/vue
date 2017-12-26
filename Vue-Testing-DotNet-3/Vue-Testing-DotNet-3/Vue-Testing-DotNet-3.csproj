@@ -134,6 +134,7 @@
     <Content Include="Scripts\src\components\Welcome.vue" />
     <Content Include="tsconfig.json" />
     <Content Include="Scripts\src\components\MemberInfo.vue" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -144,6 +145,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\src\assert\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Webpack.Service\Webpack.Service.csproj">
@@ -152,6 +154,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\home\login.ts" />
     <TypeScriptCompile Include="Scripts\src\vue-module.d.ts" />
   </ItemGroup>
   <ItemGroup>
