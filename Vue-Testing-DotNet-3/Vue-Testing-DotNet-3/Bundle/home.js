@@ -76,7 +76,7 @@
 
 
 var bind = __webpack_require__(30);
-var isBuffer = __webpack_require__(74);
+var isBuffer = __webpack_require__(76);
 
 /*global toString:true*/
 
@@ -11743,7 +11743,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(5);
-var normalizeHeaderName = __webpack_require__(76);
+var normalizeHeaderName = __webpack_require__(78);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -11884,44 +11884,41 @@ var ComponentModel = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_bus__ = __webpack_require__(27);
-//AxiosResponse is optional
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_bus__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_member_m__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_member_ts__ = __webpack_require__(73);
 //EventBus is used to communicate between different module
 
-var Member = /** @class */ (function () {
-    function Member() {
-        this.userName = 'waiting...';
-        this.loginId = 'waiting...';
-        this.age = 0;
-        this.ip = 'waiting...';
-    }
-    //AxiosResponse can be replaced by any
-    //(response: any) => { ... }
-    Member.prototype.init = function (userName) {
-        var self = this;
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/member/' + userName).then(function (response) {
-            self.userName = response.data.UserName;
-            self.loginId = response.data.LoginId;
-            self.age = response.data.Age;
-            self.ip = response.data.Ip;
+//reference api files
+
+
+var member = new __WEBPACK_IMPORTED_MODULE_1__api_member_m__["a" /* Member */]();
+//AxiosResponse can be replaced by any
+//(response: any) => { ... }
+function init(userName) {
+    var awaiter = new Promise(function (resolve, reject) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_2__api_member_ts__["a" /* default */].get(userName, function (response) {
+            member.userName = _this.UserName;
+            member.loginId = _this.LoginId;
+            member.age = _this.Age;
+            member.ip = _this.Ip;
+            resolve();
         }, function (response) {
             alert(response);
+            reject();
         });
-    };
-    return Member;
-}());
-var member = new Member();
-__WEBPACK_IMPORTED_MODULE_1__event_bus__["a" /* default */].$on('init', function (userName) {
-    member.init(userName);
+    });
+    awaiter.then(function () { return console.log('member initial done...'); });
+}
+__WEBPACK_IMPORTED_MODULE_0__event_bus__["a" /* default */].$on('init', function (userName) {
+    init(userName);
 });
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: {
         dateNow: {
-            type: Date,
-            default: new Date()
+            type: String,
+            default: new Date().toString()
         }
     },
     data: function () {
@@ -11958,12 +11955,12 @@ module.exports = function bind(fn, thisArg) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(5);
-var settle = __webpack_require__(77);
-var buildURL = __webpack_require__(79);
-var parseHeaders = __webpack_require__(80);
-var isURLSameOrigin = __webpack_require__(81);
+var settle = __webpack_require__(79);
+var buildURL = __webpack_require__(81);
+var parseHeaders = __webpack_require__(82);
+var isURLSameOrigin = __webpack_require__(83);
 var createError = __webpack_require__(32);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(82);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(84);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -12060,7 +12057,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(83);
+      var cookies = __webpack_require__(85);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -12145,7 +12142,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(78);
+var enhanceError = __webpack_require__(80);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -12356,7 +12353,7 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(29);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a47bd6f8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a47bd6f8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(93);
 var disposed = false
 var normalizeComponent = __webpack_require__(8)
 /* script */
@@ -12403,12 +12400,90 @@ if (false) {(function () {
 
 /***/ }),
 /* 72 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __webpack_require__(73);
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Member; });
+/* unused harmony export LoginRequest */
+var Member = /** @class */ (function () {
+    function Member() {
+        this.userName = 'waiting...';
+        this.loginId = 'waiting...';
+        this.age = 0;
+        this.ip = 'waiting...';
+    }
+    return Member;
+}());
+
+var LoginRequest = /** @class */ (function () {
+    function LoginRequest() {
+        this.loginId = '';
+        this.password = '';
+    }
+    return LoginRequest;
+}());
+
+
 
 /***/ }),
 /* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//AxiosResponse is optional
+
+function requestHandle(config) {
+    var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create();
+    return instance.request(config).then(function (response) {
+        if (successCallback) {
+            successCallback.apply(response.data, response);
+        }
+    }, function (response) {
+        if (errorCallback) {
+            errorCallback(response);
+        }
+    });
+}
+//AxiosResponse can be replaced by any
+//(response: any) => { ... }
+/* harmony default export */ __webpack_exports__["a"] = ({
+    get: function (userName, successCallback, errorCallback) {
+        var config = {
+            url: '/member/' + userName,
+            method: 'get',
+            baseURL: '/api/'
+        };
+        return requestHandle(config);
+    },
+    login: function (request, successCallback, errorCallback) {
+        //let instance = axios.create();
+        //let data = {
+        //    LoginId: request.loginId,
+        //    Password: request.password
+        //};
+        //return instance.post('/api/member/login', data).then((response: AxiosResponse) => {
+        //    if (successCallback) {
+        //        successCallback.apply(response.data, response);
+        //    }
+        //}, (response: AxiosResponse) => {
+        //    if (errorCallback) {
+        //        errorCallback(response);
+        //    }
+        //});
+    }
+});
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(75);
+
+/***/ }),
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12416,7 +12491,7 @@ module.exports = __webpack_require__(73);
 
 var utils = __webpack_require__(5);
 var bind = __webpack_require__(30);
-var Axios = __webpack_require__(75);
+var Axios = __webpack_require__(77);
 var defaults = __webpack_require__(17);
 
 /**
@@ -12451,14 +12526,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(34);
-axios.CancelToken = __webpack_require__(89);
+axios.CancelToken = __webpack_require__(91);
 axios.isCancel = __webpack_require__(33);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(90);
+axios.spread = __webpack_require__(92);
 
 module.exports = axios;
 
@@ -12467,7 +12542,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports) {
 
 /*!
@@ -12494,7 +12569,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12502,8 +12577,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(17);
 var utils = __webpack_require__(5);
-var InterceptorManager = __webpack_require__(84);
-var dispatchRequest = __webpack_require__(85);
+var InterceptorManager = __webpack_require__(86);
+var dispatchRequest = __webpack_require__(87);
 
 /**
  * Create a new instance of Axios
@@ -12580,7 +12655,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12599,7 +12674,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12632,7 +12707,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12660,7 +12735,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12735,7 +12810,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12795,7 +12870,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12870,7 +12945,7 @@ module.exports = (
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12913,7 +12988,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12973,7 +13048,7 @@ module.exports = (
 
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13032,18 +13107,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(5);
-var transformData = __webpack_require__(86);
+var transformData = __webpack_require__(88);
 var isCancel = __webpack_require__(33);
 var defaults = __webpack_require__(17);
-var isAbsoluteURL = __webpack_require__(87);
-var combineURLs = __webpack_require__(88);
+var isAbsoluteURL = __webpack_require__(89);
+var combineURLs = __webpack_require__(90);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -13125,7 +13200,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13152,7 +13227,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13173,7 +13248,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13194,7 +13269,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13258,7 +13333,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13292,7 +13367,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
