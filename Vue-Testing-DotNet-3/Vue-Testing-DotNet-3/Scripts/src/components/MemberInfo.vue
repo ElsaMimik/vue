@@ -1,5 +1,5 @@
 ﻿<template>
-    <div>
+    <div v-bind:params="initValue">
         <div>
             UserName: <span>{{member.userName}}</span>
         </div>
@@ -47,24 +47,34 @@
                 }
             );
         });
-        awaiter.then(() => console.log('member initial done...'));
+        awaiter.then(() => {
+            console.log('member init request done...');
+            EventBus.$emit('member-init-done');
+        });
     }
-
-    EventBus.$on('init', function (userName) {
-        init(userName);
-    });
 
     export default {
         props: {
-            dateNow: {
+            initValue: {
                 type: String,
-                default: new Date().toString()
+                default: ''
             }
         },
         data() {
             return {
+                dateNow: new Date().toString(),
                 member: member
             };
+        },
+        watch: {
+            initValue: {
+                immediate: true,
+                handler(newValue, oldValue) {
+                    if (newValue) {
+                        init(this.initValue);
+                    }
+                }
+            }
         }
     }
 

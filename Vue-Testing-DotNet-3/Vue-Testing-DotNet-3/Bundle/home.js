@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 68);
+/******/ 	return __webpack_require__(__webpack_require__.s = 67);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -75,8 +75,8 @@
 "use strict";
 
 
-var bind = __webpack_require__(30);
-var isBuffer = __webpack_require__(76);
+var bind = __webpack_require__(29);
+var isBuffer = __webpack_require__(75);
 
 /*global toString:true*/
 
@@ -709,7 +709,8 @@ module.exports = g;
 /***/ }),
 /* 11 */,
 /* 12 */,
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11483,7 +11484,6 @@ Vue$3.compile = compileToFunctions;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9), __webpack_require__(10), __webpack_require__(15).setImmediate))
 
 /***/ }),
-/* 14 */,
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11743,7 +11743,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(5);
-var normalizeHeaderName = __webpack_require__(78);
+var normalizeHeaderName = __webpack_require__(77);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -11759,10 +11759,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(31);
+    adapter = __webpack_require__(30);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(31);
+    adapter = __webpack_require__(30);
   }
   return adapter;
 }
@@ -11849,18 +11849,6 @@ module.exports = defaults;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
-//EventBus is used to communicate between different module 
-
-var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]();
-/* harmony default export */ __webpack_exports__["a"] = (EventBus);
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 var WelcomeModel = /** @class */ (function () {
     function WelcomeModel(name) {
         this.userName = name;
@@ -11880,29 +11868,25 @@ var ComponentModel = /** @class */ (function () {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_bus__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_member_m__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_member_ts__ = __webpack_require__(73);
-//EventBus is used to communicate between different module
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_member_m__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_member_ts__ = __webpack_require__(72);
 //reference api files
 
 
-var member = new __WEBPACK_IMPORTED_MODULE_1__api_member_m__["a" /* Member */]();
+var member = new __WEBPACK_IMPORTED_MODULE_0__api_member_m__["a" /* Member */]();
 //AxiosResponse can be replaced by any
 //(response: any) => { ... }
 function init(userName) {
     var awaiter = new Promise(function (resolve, reject) {
-        var _this = this;
-        __WEBPACK_IMPORTED_MODULE_2__api_member_ts__["a" /* default */].get(userName, function (response) {
-            member.userName = _this.UserName;
-            member.loginId = _this.LoginId;
-            member.age = _this.Age;
-            member.ip = _this.Ip;
+        __WEBPACK_IMPORTED_MODULE_1__api_member_ts__["a" /* default */].get(userName, function (data) {
+            member.userName = data.UserName;
+            member.loginId = data.LoginId;
+            member.age = data.Age;
+            member.ip = data.Ip;
             resolve();
         }, function (response) {
             alert(response);
@@ -11911,26 +11895,36 @@ function init(userName) {
     });
     awaiter.then(function () { return console.log('member initial done...'); });
 }
-__WEBPACK_IMPORTED_MODULE_0__event_bus__["a" /* default */].$on('init', function (userName) {
-    init(userName);
-});
+//EventBus.$on('init.memberInfo', function (userName) {
+//    init(userName);
+//    console.log('init memberInfo...');
+//});
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: {
-        dateNow: {
+        memberInfoInitValue: {
             type: String,
-            default: new Date().toString()
+            default: ''
         }
     },
     data: function () {
         return {
+            dateNow: new Date().toString(),
             member: member
         };
+    },
+    computed: {
+        init: function () {
+            if (this.memberInfoInitValue == 1) {
+                init(this.memberInfoInitValue);
+                console.log('init memberInfo...');
+            }
+        }
     }
 });
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11948,19 +11942,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(5);
-var settle = __webpack_require__(79);
-var buildURL = __webpack_require__(81);
-var parseHeaders = __webpack_require__(82);
-var isURLSameOrigin = __webpack_require__(83);
-var createError = __webpack_require__(32);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(84);
+var settle = __webpack_require__(78);
+var buildURL = __webpack_require__(80);
+var parseHeaders = __webpack_require__(81);
+var isURLSameOrigin = __webpack_require__(82);
+var createError = __webpack_require__(31);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(83);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -12057,7 +12051,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(85);
+      var cookies = __webpack_require__(84);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -12136,13 +12130,13 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(80);
+var enhanceError = __webpack_require__(79);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -12161,7 +12155,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12173,7 +12167,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12199,6 +12193,7 @@ module.exports = Cancel;
 
 
 /***/ }),
+/* 34 */,
 /* 35 */,
 /* 36 */,
 /* 37 */,
@@ -12231,49 +12226,49 @@ module.exports = Cancel;
 /* 64 */,
 /* 65 */,
 /* 66 */,
-/* 67 */,
-/* 68 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_bus__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Welcome_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_MemberInfo_vue__ = __webpack_require__(71);
-
-//EventBus is used to communicate between different module
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Welcome_vue__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_MemberInfo_vue__ = __webpack_require__(70);
 
 //reference components as following
 
 
-var VueModel = /** @class */ (function () {
-    function VueModel() {
+//EventBus.$emit('init.memberInfo', 'alpha');
+new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+    el: '#app',
+    template: '<div>\
+                 <Welcome />\
+                 <MemberInfo :member-info-init-value="userName" />\
+               </div>',
+    components: {
+        Welcome: __WEBPACK_IMPORTED_MODULE_1__components_Welcome_vue__["a" /* default */],
+        MemberInfo: __WEBPACK_IMPORTED_MODULE_2__components_MemberInfo_vue__["a" /* default */]
+    },
+    props: {
+        userName: {
+            type: String,
+            default: ''
+        }
+    },
+    beforeMount: function () {
+        this.userName = 'alpha';
     }
-    return VueModel;
-}());
-var model = new VueModel();
-model.el = '#app';
-model.template = '<div>\
-                    <Welcome />\
-                    <MemberInfo />\
-                  </div>';
-model.components = {
-    Welcome: __WEBPACK_IMPORTED_MODULE_2__components_Welcome_vue__["a" /* default */],
-    MemberInfo: __WEBPACK_IMPORTED_MODULE_3__components_MemberInfo_vue__["a" /* default */]
-};
-__WEBPACK_IMPORTED_MODULE_1__event_bus__["a" /* default */].$emit('init', 'alpha');
-new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */](model);
+});
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Welcome_vue__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Welcome_vue__ = __webpack_require__(27);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60754bf6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Welcome_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60754bf6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Welcome_vue__ = __webpack_require__(69);
 var disposed = false
 var normalizeComponent = __webpack_require__(8)
 /* script */
@@ -12319,7 +12314,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12347,13 +12342,13 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(28);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a47bd6f8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a47bd6f8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_MemberInfo_vue__ = __webpack_require__(92);
 var disposed = false
 var normalizeComponent = __webpack_require__(8)
 /* script */
@@ -12399,7 +12394,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12426,19 +12421,20 @@ var LoginRequest = /** @class */ (function () {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //AxiosResponse is optional
 
-function requestHandle(config) {
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = '/api/';
+function requestHandle(config, successCallback, errorCallback) {
     var instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create();
     return instance.request(config).then(function (response) {
         if (successCallback) {
-            successCallback.apply(response.data, response);
+            successCallback(response.data, response);
         }
     }, function (response) {
         if (errorCallback) {
@@ -12446,52 +12442,44 @@ function requestHandle(config) {
         }
     });
 }
-//AxiosResponse can be replaced by any
-//(response: any) => { ... }
 /* harmony default export */ __webpack_exports__["a"] = ({
     get: function (userName, successCallback, errorCallback) {
         var config = {
             url: '/member/' + userName,
-            method: 'get',
-            baseURL: '/api/'
+            method: 'get'
         };
-        return requestHandle(config);
+        return requestHandle(config, successCallback, errorCallback);
     },
     login: function (request, successCallback, errorCallback) {
-        //let instance = axios.create();
-        //let data = {
-        //    LoginId: request.loginId,
-        //    Password: request.password
-        //};
-        //return instance.post('/api/member/login', data).then((response: AxiosResponse) => {
-        //    if (successCallback) {
-        //        successCallback.apply(response.data, response);
-        //    }
-        //}, (response: AxiosResponse) => {
-        //    if (errorCallback) {
-        //        errorCallback(response);
-        //    }
-        //});
+        var data = {
+            LoginId: request.loginId,
+            Password: request.password
+        };
+        var config = {
+            url: '/member/login',
+            method: 'post'
+        };
+        return requestHandle(config, successCallback, errorCallback);
     }
 });
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(75);
+module.exports = __webpack_require__(74);
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(5);
-var bind = __webpack_require__(30);
-var Axios = __webpack_require__(77);
+var bind = __webpack_require__(29);
+var Axios = __webpack_require__(76);
 var defaults = __webpack_require__(17);
 
 /**
@@ -12525,15 +12513,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(34);
-axios.CancelToken = __webpack_require__(91);
-axios.isCancel = __webpack_require__(33);
+axios.Cancel = __webpack_require__(33);
+axios.CancelToken = __webpack_require__(90);
+axios.isCancel = __webpack_require__(32);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(92);
+axios.spread = __webpack_require__(91);
 
 module.exports = axios;
 
@@ -12542,7 +12530,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports) {
 
 /*!
@@ -12569,7 +12557,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12577,8 +12565,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(17);
 var utils = __webpack_require__(5);
-var InterceptorManager = __webpack_require__(86);
-var dispatchRequest = __webpack_require__(87);
+var InterceptorManager = __webpack_require__(85);
+var dispatchRequest = __webpack_require__(86);
 
 /**
  * Create a new instance of Axios
@@ -12655,7 +12643,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12674,13 +12662,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(32);
+var createError = __webpack_require__(31);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -12707,7 +12695,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12735,7 +12723,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12810,7 +12798,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12870,7 +12858,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12945,7 +12933,7 @@ module.exports = (
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12988,7 +12976,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13048,7 +13036,7 @@ module.exports = (
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13107,18 +13095,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(5);
-var transformData = __webpack_require__(88);
-var isCancel = __webpack_require__(33);
+var transformData = __webpack_require__(87);
+var isCancel = __webpack_require__(32);
 var defaults = __webpack_require__(17);
-var isAbsoluteURL = __webpack_require__(89);
-var combineURLs = __webpack_require__(90);
+var isAbsoluteURL = __webpack_require__(88);
+var combineURLs = __webpack_require__(89);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -13200,7 +13188,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13227,7 +13215,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13248,7 +13236,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13269,13 +13257,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(34);
+var Cancel = __webpack_require__(33);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -13333,7 +13321,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13367,7 +13355,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13378,7 +13366,7 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _vm._v("\n        UserName: "),
-      _c("span", [_vm._v(_vm._s(_vm.member.userName))])
+      _c("span", [_vm._v(_vm._s(_vm.memberInfoInitValue))])
     ]),
     _vm._v(" "),
     _c("div", [

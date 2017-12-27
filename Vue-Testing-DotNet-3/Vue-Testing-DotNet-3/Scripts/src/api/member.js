@@ -13,8 +13,6 @@ function requestHandle(config, successCallback, errorCallback) {
         }
     });
 }
-//AxiosResponse can be replaced by any
-//(response: any) => { ... }
 export default {
     get: function (userName, successCallback, errorCallback) {
         var config = {

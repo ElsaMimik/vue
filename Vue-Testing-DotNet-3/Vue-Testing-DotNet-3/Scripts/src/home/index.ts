@@ -5,23 +5,26 @@ import EventBus from '../event-bus'
 import Welcome from '@/components/Welcome.vue'
 import MemberInfo from '@/components/MemberInfo.vue'
 
-class VueModel {
-    el: string;
-    template: string;
-    components: {};
-}
-
-let model = new VueModel();
-model.el = '#app';
-model.template = '<div>\
-                    <Welcome />\
-                    <MemberInfo />\
-                  </div>';
-model.components = {
-    Welcome,
-    MemberInfo
-};
-
-EventBus.$emit('init', 'alpha');
-
-new Vue(model);
+new Vue({
+    el: '#app',
+    template: '<div>\
+                 <Welcome />\
+                 <MemberInfo :init-value="userName" />\
+               </div>',
+    components: {
+        Welcome,
+        MemberInfo
+    },
+    props: {
+        userName: {
+            type: String,
+            default: ''
+        }
+    },
+    beforeMount() {
+        this.userName = 'alpha'
+        EventBus.$once('member-init-done', () => {
+            console.log('member info component finished...');
+        });
+    }
+});
