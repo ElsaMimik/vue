@@ -71,9 +71,7 @@
             initValue: {
                 immediate: true,
                 handler(newValue, oldValue) {
-                    if (newValue) {
-                        init(this.initValue);
-                    }
+                    newValue && (newValue !== oldValue) && init(newValue);
                 }
             }
         }
