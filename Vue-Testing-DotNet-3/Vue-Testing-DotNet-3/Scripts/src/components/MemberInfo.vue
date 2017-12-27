@@ -20,6 +20,7 @@
 
 <script lang="ts">
 
+    import Moment from 'moment'
     //EventBus is used to communicate between different module
     import EventBus from '../event-bus'
     //reference api files
@@ -62,7 +63,7 @@
         },
         data() {
             return {
-                dateNow: new Date().toString(),
+                dateNow: Moment().format('YYYY-MM-DD HH:mm:ss'),
                 member: member
             };
         },
