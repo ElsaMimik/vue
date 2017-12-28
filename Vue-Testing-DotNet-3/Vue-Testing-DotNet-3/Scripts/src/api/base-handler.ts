@@ -1,12 +1,12 @@
 ﻿//AxiosResponse is optional
 //AxiosResponse can be replaced by any
 //(response: any) => { ... }
-import axios, { AxiosResponse, AxiosRequestConfig, AxiosPromise } from 'axios'
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 
 axios.defaults.baseURL = '/api/';
 
 export default {
-    request(config: AxiosRequestConfig, successCallback?: CallBackFunction.SuccessCallback, errorCallback?: CallBackFunction.ErrorCallback) {
+    request(config: AxiosRequestConfig, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Error) {
         let instance = axios.create();
         return instance.request(config).then((response: AxiosResponse) => {
             if (successCallback) {

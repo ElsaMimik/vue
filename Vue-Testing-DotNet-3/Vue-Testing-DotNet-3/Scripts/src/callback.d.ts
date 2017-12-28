@@ -3,7 +3,7 @@
 //(response: any) => { ... }
 import { AxiosResponse } from 'axios'
 
-declare type SuccessCallback = (data: any, response?: AxiosResponse) => void;
-declare type ErrorCallback = (response?: AxiosResponse) => void;
+declare type Success = (data: any, response?: AxiosResponse) => void;
+declare type Error = (response?: AxiosResponse) => void;
 
-export as namespace CallBackFunction;
+export as namespace CallbackFunction;
