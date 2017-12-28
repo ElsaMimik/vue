@@ -1,4 +1,6 @@
 //AxiosResponse is optional
+//AxiosResponse can be replaced by any
+//(response: any) => { ... }
 import axios from 'axios';
 axios.defaults.baseURL = '/api/';
 export default {

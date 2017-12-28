@@ -111,6 +111,7 @@
     <TypeScriptCompile Include="Scripts\src\api\base-handler.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member-m.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member.ts" />
+    <TypeScriptCompile Include="Scripts\src\callback.d.ts" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
     <TypeScriptCompile Include="Scripts\src\event-bus.ts" />
     <Content Include="Scripts\vue.js" />
