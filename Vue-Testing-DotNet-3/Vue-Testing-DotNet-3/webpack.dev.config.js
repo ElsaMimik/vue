@@ -7,7 +7,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: {
         home: './Scripts/src/home/index.ts',
-        login: './Scripts/src/home/login.ts'
+        login: './Scripts/src/home/login.ts',
+        sumAmount: './Scripts/src/home/sumAmount.ts'
     },
     output: {
         path: path.resolve(__dirname, 'Bundle'),
