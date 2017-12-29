@@ -12,6 +12,7 @@
     "axios": "^0.17.1",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
+    "signalr-no-jquery": "^0.1.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -52,7 +53,7 @@
     "stylus-loader": "^3.0.1",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
-    "uglifyjs-webpack-plugin": "^1.1.1",
+    "uglifyjs-webpack-plugin": "^1.1.5",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",

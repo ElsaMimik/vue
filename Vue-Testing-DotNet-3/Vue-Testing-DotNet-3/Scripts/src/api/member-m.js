@@ -1,4 +1,4 @@
-var Member = (function () {
+var Member = /** @class */ (function () {
     function Member() {
         this.userName = 'waiting...';
         this.loginId = 'waiting...';
@@ -8,7 +8,7 @@ var Member = (function () {
     return Member;
 }());
 export { Member };
-var LoginRequest = (function () {
+var LoginRequest = /** @class */ (function () {
     function LoginRequest() {
         this.loginId = '';
         this.password = '';

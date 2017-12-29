@@ -24,8 +24,8 @@
     //EventBus is used to communicate between different module
     import EventBus from '../event-bus'
     //reference api files
-    import * as Model from '@/api/member-m'
-    import Controller from '@/api/member.ts'
+    import * as Model from '../api/member-m'
+    import Controller from '../api/member'
 
     let member = new Model.Member();
 
@@ -42,8 +42,8 @@
                     member.ip = data.Ip;
                     resolve();
                 },
-                (response) => {
-                    alert(response);
+                (res) => {
+                    res && res.data && alert(res.data.ExceptionMessage);
                     reject();
                 }
             );
