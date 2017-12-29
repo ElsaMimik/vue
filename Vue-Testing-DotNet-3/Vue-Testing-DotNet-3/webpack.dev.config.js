@@ -2,6 +2,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -56,6 +57,14 @@ module.exports = {
                     'sass-loader'
                 ]
             },
+            {
+                test: /\.less$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: "less-loader" }
+                ]
+            },
             { 
                 test: /\.png$/, 
                 loader: 'url-loader',
@@ -92,4 +101,12 @@ module.exports = {
         publicPath: '/Bundle',
         contentBase: '/Scripts'
     },
+    plugins: [
+        new UglifyJsPlugin({
+            sourceMap: true,
+            uglifyOptions: {
+                compress: true
+            }
+        })
+    ]
 }

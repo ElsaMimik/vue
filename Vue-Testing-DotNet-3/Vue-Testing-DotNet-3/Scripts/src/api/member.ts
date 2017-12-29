@@ -2,14 +2,14 @@
 import * as Model from './member-m'
 
 export default {
-    get(userName: string, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Success) {
+    get(userName: string, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Error) {
         let config = {
             url: '/member/' + userName,
             method: 'get'
         };
         return handler.request(config, successCallback, errorCallback);
     },
-    login(request: Model.LoginRequest, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Success) {
+    login(request: Model.LoginRequest, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Error) {
         let config = {
             url: '/member/login',
             method: 'post',

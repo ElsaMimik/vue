@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <span>{{userName}}</span>
+        <span>{{userName}} login success</span>
         <br />
         <span>Welcome to the vue's world</span>
     </div>

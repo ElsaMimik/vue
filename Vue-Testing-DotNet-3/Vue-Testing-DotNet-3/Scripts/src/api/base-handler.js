@@ -5,16 +5,7 @@ import axios from 'axios';
 axios.defaults.baseURL = '/api/';
 export default {
     request: function (config, successCallback, errorCallback) {
-        var instance = axios.create();
-        return instance.request(config).then(function (response) {
-            if (successCallback) {
-                successCallback(response.data, response);
-            }
-        }, function (response) {
-            if (errorCallback) {
-                errorCallback(response);
-            }
-        });
+        return axios.create().request(config).then(function (response) { return successCallback && successCallback(response.data, response); }, function (error) { return errorCallback && errorCallback(error.response, error); });
     }
 };
 //# sourceMappingURL=base-handler.js.map
