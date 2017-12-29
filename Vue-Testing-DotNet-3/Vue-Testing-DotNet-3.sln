@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vue-Testing-DotNet-3", "Vue
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webpack.Service", "Webpack.Service\Webpack.Service.csproj", "{44C18677-2EB9-4E34-9747-E938834AC349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingProject", "TestingProject\TestingProject.csproj", "{89F10364-8320-4020-8C44-8F15380764D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44C18677-2EB9-4E34-9747-E938834AC349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C18677-2EB9-4E34-9747-E938834AC349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C18677-2EB9-4E34-9747-E938834AC349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F10364-8320-4020-8C44-8F15380764D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F10364-8320-4020-8C44-8F15380764D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F10364-8320-4020-8C44-8F15380764D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F10364-8320-4020-8C44-8F15380764D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

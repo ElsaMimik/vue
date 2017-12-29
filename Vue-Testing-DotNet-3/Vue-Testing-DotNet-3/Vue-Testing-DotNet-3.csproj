@@ -107,12 +107,22 @@
     <Content Include="Bundle\home.js" />
     <Content Include="Bundle\login.js" />
     <Content Include="Bundle\svg\fontawesome-webfont.svg" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <TypeScriptCompile Include="Scripts\src\api\base-handler.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member-m.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member.ts" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
     <TypeScriptCompile Include="Scripts\src\event-bus.ts" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />
@@ -139,7 +149,12 @@
     <Content Include="Bundle\fonts\fontawesome-webfont.ttf" />
     <Content Include="Bundle\fonts\fontawesome-webfont.woff" />
     <Content Include="Bundle\fonts\fontawesome-webfont.woff2" />
-    <None Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\src\components\Welcome.vue" />
     <Content Include="tsconfig.json" />
@@ -147,6 +162,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Scripts\src\components\Login.vue" />
     <Content Include="Scripts\src\assert\custom.scss" />
+    <Content Include="Views\Home\SumAmount.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\src\components\SumAmount.vue" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +175,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Webpack.Service\Webpack.Service.csproj">
@@ -165,6 +184,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\home\sumAmount.ts" />
     <TypeScriptCompile Include="Scripts\src\home\login.ts" />
     <TypeScriptCompile Include="Scripts\src\vue-module.d.ts" />
   </ItemGroup>

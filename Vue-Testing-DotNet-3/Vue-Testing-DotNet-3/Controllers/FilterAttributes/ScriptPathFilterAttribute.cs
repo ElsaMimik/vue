@@ -14,10 +14,9 @@ namespace Vue_Testing_DotNet_3.Controllers
             filterContext.Controller.ViewBag.ScriptPathPrefix = "~";
 
 #if CONFIG == Debug
-            if (Debugger.IsAttached)
-            {
+            
                 filterContext.Controller.ViewBag.ScriptPathPrefix = "http://localhost:9090";
-            }
+            
 #endif
 
             base.OnActionExecuted(filterContext);
