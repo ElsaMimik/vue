@@ -35,6 +35,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+    <TypeScriptModuleResolution>NodeJs</TypeScriptModuleResolution>
+    <TypeScriptTarget>ES6</TypeScriptTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -946,19 +949,15 @@
     <TypeScriptCompile Include="Scripts\src\api\base-handler.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member-m.ts" />
     <TypeScriptCompile Include="Scripts\src\api\member.ts" />
-    <TypeScriptCompile Include="Scripts\src\callback.d.ts" />
-    <TypeScriptCompile Include="Scripts\src\event-bus.ts" />
+    <TypeScriptCompile Include="Scripts\src\lib\callback.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\lib\event-bus.ts" />
     <TypeScriptCompile Include="Scripts\src\home\index.ts" />
     <TypeScriptCompile Include="Scripts\src\home\login.ts" />
-    <TypeScriptCompile Include="Scripts\src\vue-module.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\lib\vue-module.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
-    <TypeScriptModuleResolution>NodeJs</TypeScriptModuleResolution>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

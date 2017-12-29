@@ -22,7 +22,7 @@
 
     import Moment from 'moment'
     //EventBus is used to communicate between different module
-    import EventBus from '../event-bus'
+    import EventBus from '../lib/event-bus'
     //reference api files
     import * as Model from '../api/member-m'
     import Controller from '../api/member'
@@ -62,10 +62,23 @@
             }
         },
         data() {
-            return {
-                dateNow: Moment().format('YYYY-MM-DD HH:mm:ss'),
+
+            let model = {
+                date: Moment(),
                 member: member
             };
+
+            setInterval(() => {
+                model.date = Moment();
+            }, 1000);
+
+            return model;
+        },
+        computed: {
+            dateNow() {
+                let dateString = this.date.format('YYYY-MM-DD HH:mm:ss');
+                return dateString;
+            }
         },
         watch: {
             initValue: {
