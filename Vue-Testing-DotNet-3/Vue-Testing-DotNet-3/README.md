@@ -25,6 +25,7 @@ please install the following items to build the environment:
         npm install
         ```
     2.7. [TypeScript 2.6 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=55258)
+    2.8. [SpecFlow for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
 
 ### PROJECT
 1. avoid TypeScript some debug warnning in vs2017, add in csproj file -- [link](http://bodiddlie.github.io/ng-2-quickstart-vs2015/)
@@ -34,3 +35,27 @@ please install the following items to build the environment:
     <TypeScriptModuleResolution>NodeJs</TypeScriptModuleResolution>
 </PropertyGroup>
 ```
+2. TypeScript include global node_modules like 'axios' must add following in tsconfig.json -- [link](https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/tsconfig.json.html)
+```
+"compilerOptions": {
+    ...other setting
+    "types": [ "axios" ]
+}
+```
+3. TypeScript disable generate js in visual studio -- [link](https://stackoverflow.com/questions/40667665/how-to-prevent-visual-studio-2017-from-build-javascript)
+    3.1. In csproj file
+    ```
+    <PropertyGroup>
+        <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    </PropertyGroup>
+    ```
+    3.2. Make sure you are including your typescript files as content
+    ```
+    <ItemGroup>
+        <Content Include="[path][name].ts" />
+    </ItemGroup>
+    ```
+    3.3. Add a tsconfig.json file to your project root and make sure the following setting is set:
+    ```
+    "compileOnSave": false
+    ```

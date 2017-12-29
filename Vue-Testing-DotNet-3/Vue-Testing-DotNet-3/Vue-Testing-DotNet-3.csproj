@@ -972,16 +972,19 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\src\home\sumAmount.ts" />
-    <TypeScriptCompile Include="Scripts\src\api\base-handler.ts" />
-    <TypeScriptCompile Include="Scripts\src\api\member-m.ts" />
-    <TypeScriptCompile Include="Scripts\src\api\member.ts" />
-    <TypeScriptCompile Include="Scripts\src\lib\callback.d.ts" />
-    <TypeScriptCompile Include="Scripts\src\lib\event-bus.ts" />
-    <TypeScriptCompile Include="Scripts\src\home\index.ts" />
-    <TypeScriptCompile Include="Scripts\src\home\login.ts" />
-    <TypeScriptCompile Include="Scripts\src\lib\vue-module.d.ts" />
+    <Content Include="Scripts\src\home\sumAmount.ts" />
+    <Content Include="Scripts\src\api\base-handler.ts" />
+    <Content Include="Scripts\src\api\member-m.ts" />
+    <Content Include="Scripts\src\api\member.ts" />
+    <Content Include="Scripts\src\lib\callback.d.ts" />
+    <Content Include="Scripts\src\lib\event-bus.ts" />
+    <Content Include="Scripts\src\home\index.ts" />
+    <Content Include="Scripts\src\home\login.ts" />
+    <Content Include="Scripts\src\lib\vue-module.d.ts" />
   </ItemGroup>
+  <PropertyGroup>
+     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
