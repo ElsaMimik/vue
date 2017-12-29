@@ -1,4 +1,5 @@
 /// <reference path="../lib/callback.d.ts" />
+//reference callback.d.ts for debug witout error
 //AxiosResponse is optional
 //AxiosResponse can be replaced by any
 //(response: any) => { ... }

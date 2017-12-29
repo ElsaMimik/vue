@@ -16,10 +16,6 @@
       "es2015"
     ]
   },
-  "filesGlob": [
-    "**/*.ts",
-    "!node_modules/**/*"
-  ],
   "exclude": [
     "node_modules"
   ],

@@ -27,7 +27,7 @@ please install the following items to build the environment:
     2.7. [TypeScript 2.6 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=55258)
 
 ### PROJECT
-1. avoid TypeScript import node_module debug error in vs2017, add in csproj file -- [link](http://bodiddlie.github.io/ng-2-quickstart-vs2015/)
+1. avoid TypeScript some debug warnning in vs2017, add in csproj file -- [link](http://bodiddlie.github.io/ng-2-quickstart-vs2015/)
 ```
 <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>

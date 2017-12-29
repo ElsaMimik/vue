@@ -18,11 +18,8 @@ namespace Vue_Testing_DotNet_3
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
 #if CONFIG == Debug
-            if (Debugger.IsAttached)
-            {
-                var projectPath = Server.MapPath("/");
-                Webpack.Service.Utility.StartWebPackDevServer($"{projectPath}bin", configName: "webpack.dev.config.js", configPath: projectPath);
-            }
+            var projectPath = Server.MapPath("/");
+            Webpack.Service.Utility.StartWebPackDevServer($"{projectPath}bin", configName: "webpack.dev.config.js", configPath: projectPath);
 #endif
         }
     }
