@@ -1,15 +1,17 @@
-﻿import handler from './base-handler'
-import * as Model from './member-m'
+﻿import * as Model from './member-m'
+import handler from './base-handler'
 
-export default {
-    get(userName: string, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Error) {
+class MemberController {
+
+    get(userName: string, successCallback?: HttpCallback.Success, errorCallback?: HttpCallback.Error) {
         let config = {
             url: '/member/' + userName,
             method: 'get'
         };
         return handler.request(config, successCallback, errorCallback);
-    },
-    login(request: Model.LoginRequest, successCallback?: CallbackFunction.Success, errorCallback?: CallbackFunction.Error) {
+    }
+
+    login(request: Model.LoginRequest, successCallback?: HttpCallback.Success, errorCallback?: HttpCallback.Error) {
         let config = {
             url: '/member/login',
             method: 'post',
@@ -21,3 +23,5 @@ export default {
         return handler.request(config, successCallback, errorCallback);
     }
 }
+
+export default new MemberController();

@@ -1,8 +1,10 @@
 ﻿export class Member {
+
     userName: string;
     loginId: string;
     age: number;
     ip: string;
+
     constructor() {
         this.userName = 'waiting...';
         this.loginId = 'waiting...';

@@ -976,14 +976,17 @@
     <Content Include="Scripts\src\api\base-handler.ts" />
     <Content Include="Scripts\src\api\member-m.ts" />
     <Content Include="Scripts\src\api\member.ts" />
-    <Content Include="Scripts\src\lib\callback.d.ts" />
     <Content Include="Scripts\src\lib\event-bus.ts" />
     <Content Include="Scripts\src\home\index.ts" />
     <Content Include="Scripts\src\home\login.ts" />
     <Content Include="Scripts\src\lib\vue-module.d.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\lib\callback.d.ts" />
+  </ItemGroup>
   <PropertyGroup>
-     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptAllowSyntheticDefaultImports>true</TypeScriptAllowSyntheticDefaultImports>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
