@@ -22,47 +22,48 @@
 
 <script lang="ts">
 
+    //reference component decorators
+    import Vue from 'vue'
+    import { Component } from 'vue-property-decorator'
+    //reference api files
     import { LoginRequest } from '../api/member-m'
     import Controller from '../api/member'
 
-    export default {
-        data() {
-            return {
-                loginId: '',
-                password: '',
-                showAlert: false,
-                errorMessage: ''
-            };
-        },
-        methods: {
-            loginSubmit: function (event) {
+    @Component
+    export default class LoginComponent extends Vue {
 
-                //stop default action for form submit
-                event.preventDefault();
+        loginId: string = '';
+        password:string = '';
+        showAlert: boolean = false;
+        errorMessage: string = '';
 
-                if (this.loginId && this.password) {
+        loginSubmit(event) {
 
-                    var request = new LoginRequest();
-                    request.loginId = this.loginId;
-                    request.password = this.password;
+            //stop default action for form submit
+            event.preventDefault();
 
-                    Controller.login(request, (data) => {
-                        if (data && data === 'success') {
-                            location.href = '/';
-                            return;
-                        }
-                        this.errorMessage = 'LoginId or Password not match...';
-                        this.showAlert = true;
-                    }, (res) => {
-                        if (res && res.data && res.data.ExceptionMessage) {
-                            this.errorMessage = res.data.ExceptionMessage;
-                        }
-                        else {
-                            this.errorMessage = 'error occurred...';
-                        }
-                        this.showAlert = true;
-                    });
-                }
+            if (this.loginId && this.password) {
+
+                var request = new LoginRequest();
+                request.loginId = this.loginId;
+                request.password = this.password;
+
+                Controller.login(request, (data) => {
+                    if (data && data === 'success') {
+                        location.href = '/';
+                        return;
+                    }
+                    this.errorMessage = 'LoginId or Password not match...';
+                    this.showAlert = true;
+                }, (res) => {
+                    if (res && res.data && res.data.ExceptionMessage) {
+                        this.errorMessage = res.data.ExceptionMessage;
+                    }
+                    else {
+                        this.errorMessage = 'error occurred...';
+                    }
+                    this.showAlert = true;
+                });
             }
         }
     }

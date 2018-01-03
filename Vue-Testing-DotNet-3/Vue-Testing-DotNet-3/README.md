@@ -26,6 +26,7 @@ please install the following items to build the environment:
         ```
     2.7. [TypeScript 2.6 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=55258)
     2.8. [SpecFlow for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowforVisualStudio2017)
+3. [vue snippets](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.VuejsPack-18329) -- options
 
 ### PROJECT
 1. avoid TypeScript some debug warnning in vs2017, add in csproj file -- [link](http://bodiddlie.github.io/ng-2-quickstart-vs2015/)

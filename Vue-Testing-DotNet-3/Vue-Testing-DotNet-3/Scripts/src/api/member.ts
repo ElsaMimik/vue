@@ -24,4 +24,6 @@ class MemberController {
     }
 }
 
-export default new MemberController();
+const model = new MemberController();
+
+export default model;

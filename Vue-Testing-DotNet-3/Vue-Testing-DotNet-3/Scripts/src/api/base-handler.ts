@@ -20,4 +20,6 @@ class HttpModel {
     }
 }
 
-export default new HttpModel();
+const model = new HttpModel();
+
+export default model;

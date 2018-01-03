@@ -17,31 +17,17 @@
 
 <script lang="ts">
 
-    class SumAmountModel {
-        FirstAmount: number;
-        SecondAmount: number;
+    import { Component, Vue } from 'vue-property-decorator'
 
-        get Total(): number {
-            return this.FirstAmount + this.SecondAmount
+    @Component
+    export default class SumAmountComponent extends Vue {
+
+        FirstAmount: number = 0;
+        SecondAmount: number = 0;
+
+        get Total() {
+            return this.FirstAmount + this.SecondAmount;
         }
-
-        constructor() {
-            this.FirstAmount = 0;
-            this.SecondAmount = 0;
-        }
-    }
-
-    let sumAmount = new SumAmountModel();
-
-    export default {
-        data() {
-            return sumAmount;
-        },
-        computed: {
-            Total: function () {
-                return sumAmount.Total
-            }
-        }
-    }    
+    } 
 
 </script>

@@ -20,6 +20,9 @@
 
 <script lang="ts">
 
+    //reference component decorators
+    import Vue from 'vue'
+    import { Component, Prop, Watch } from 'vue-property-decorator'
     import Moment from 'moment'
     //EventBus is used to communicate between different module
     import EventBus from '../lib/event-bus'
@@ -48,46 +51,38 @@
                 }
             );
         });
+        
         awaiter.then(() => {
             console.log('member init request done...');
             EventBus.$emit('member-init-done');
         });
     }
 
-    export default {
-        props: {
-            initValue: {
-                type: String,
-                default: ''
-            }
-        },
-        data() {
+    @Component
+    export default class MemberInfoComponent extends Vue {
 
-            let model = {
-                date: Moment(),
-                member: member
-            };
+        @Prop({ default: '' })
+        initValue: string;
 
+        date: any = Moment();
+        member: Model.Member = member;
+
+        mounted () {
             setInterval(() => {
-                model.date = Moment();
+                this.date = Moment();
             }, 1000);
-
-            return model;
-        },
-        computed: {
-            dateNow() {
-                let dateString = this.date.format('YYYY-MM-DD HH:mm:ss');
-                return dateString;
-            }
-        },
-        watch: {
-            initValue: {
-                immediate: true,
-                handler(newValue, oldValue) {
-                    newValue && (newValue !== oldValue) && init(newValue);
-                }
-            }
         }
+
+        get dateNow() {
+            let dateString = this.date.format('YYYY-MM-DD HH:mm:ss');
+            return dateString;
+        }
+
+        @Watch('initValue', { immediate: true })
+        handler(newValue: string, oldValue: string) {
+            newValue && (newValue !== oldValue) && init(newValue);
+        }
+
     }
 
 </script>

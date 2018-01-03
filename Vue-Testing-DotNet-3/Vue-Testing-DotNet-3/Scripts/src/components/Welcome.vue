@@ -8,23 +8,17 @@
 
 <script lang="ts">
 
-    class WelcomeModel {
-        userName: string;
-        constructor(name: string) {
-            this.userName = name;
+    import Vue from 'vue'
+    import { Component } from 'vue-property-decorator'
+
+    @Component
+    export default class WelcomeComponent extends Vue {
+
+        userName: string = 'alpha'
+
+        mounted() {
+            console.log('welcome model initial...')
         }
     }
-
-    class ComponentModel {
-        name: string;
-        constructor(compName: string) {
-            this.name = compName;
-        }
-        data() {
-            return new WelcomeModel('alpha');
-        }
-    }
-
-    export default new ComponentModel('Welcome');
 
 </script>
