@@ -25,7 +25,7 @@
         FirstAmount: number = 0;
         SecondAmount: number = 0;
 
-        get Total() {
+        get SumTotal() {
             return this.FirstAmount + this.SecondAmount;
         }
     } 
