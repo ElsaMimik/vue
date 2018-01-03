@@ -11,7 +11,7 @@
         <br />
 
         <span>Total:</span>
-        <input type="text" id="total" :value="Total" />        
+        <input type="text" id="total" :value="SumTotal" />        
     </div>
 </template>
 
