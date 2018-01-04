@@ -16,7 +16,7 @@
       "vue"
     ],
     "testPathIgnorePatterns": [
-      "./Scripts/src/assert/"
+      "./Scripts/vendors/"
     ],
     "transform": {
       ".*\\.(vue)$": "./node_modules/vue-jest",
