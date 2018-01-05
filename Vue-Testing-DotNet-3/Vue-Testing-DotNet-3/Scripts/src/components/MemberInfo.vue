@@ -35,6 +35,7 @@
     //AxiosResponse can be replaced by any
     //(response: any) => { ... }
     function init(userName: string) {
+        
         var awaiter = new Promise(function (resolve, reject) {
             Controller.get(
                 userName,
@@ -51,7 +52,7 @@
                 }
             );
         });
-        
+
         awaiter.then(() => {
             console.log('member init request done...');
             EventBus.$emit('member-init-done');

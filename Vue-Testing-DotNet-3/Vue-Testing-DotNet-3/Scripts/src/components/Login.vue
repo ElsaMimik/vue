@@ -23,8 +23,7 @@
 <script lang="ts">
 
     //reference component decorators
-    import Vue from 'vue'
-    import { Component } from 'vue-property-decorator'
+    import { Component, Vue } from 'vue-property-decorator'
     //reference api files
     import { LoginRequest } from '../api/member-m'
     import Controller from '../api/member'
