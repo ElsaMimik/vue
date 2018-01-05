@@ -11,6 +11,7 @@ namespace Vue_Testing_DotNet_3.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            
             return View();
         }
 
