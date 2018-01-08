@@ -8,7 +8,7 @@ using System.Web.Http;
 namespace Vue_Testing_DotNet_3.Controllers.API
 {
     [RoutePrefix("api/member")]
-    public class MemberAPIController : ApiController
+    public class MemberApiController123 : ApiController
     {
         [Route("{userName}")]
         public object Get(string userName)

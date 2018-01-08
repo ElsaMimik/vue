@@ -50,20 +50,26 @@
 
                 //await can be marked and you can test the sequence for the following code
                 await Controller.login(request).then((result) => {
+
                     if (result) {
                         location.href = '/';
                         return;
                     }
+
                     this.errorMessage = 'LoginId or Password not match...';
                     this.showAlert = true;
+
                 }).catch((error) => {
-                    if (error && error.response.data.ExceptionMessage) {
+
+                    if (error && error.response.data && error.response.data.ExceptionMessage) {
                         this.errorMessage = error.response.data.ExceptionMessage;
                     }
                     else {
                         this.errorMessage = 'error occurred...';
                     }
+
                     this.showAlert = true;
+                    
                 });
 
                 console.log('did you lost to add await for ajax method ?');

@@ -35,7 +35,6 @@
     //AxiosResponse can be replaced by any
     //(response: any) => { ... }
     async function init(userName: string) {
-
         await Controller.get(userName).then((memberData) => {
             if (memberData) {
                 member.userName = memberData.userName;

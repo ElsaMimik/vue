@@ -665,9 +665,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\API\MemberAPIController.cs" />
+    <Compile Include="Controllers\API\MemberApiController123.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FilterAttributes\ScriptPathFilterAttribute.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -961,6 +962,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\src\assert\" />
+    <Folder Include="Views\Report\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
