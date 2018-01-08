@@ -34,29 +34,22 @@
 
     //AxiosResponse can be replaced by any
     //(response: any) => { ... }
-    function init(userName: string) {
-        
-        var awaiter = new Promise(function (resolve, reject) {
-            Controller.get(
-                userName,
-                (data) => {
-                    member.userName = data.UserName;
-                    member.loginId = data.LoginId;
-                    member.age = data.Age;
-                    member.ip = data.Ip;
-                    resolve();
-                },
-                (res) => {
-                    res && res.data && alert(res.data.ExceptionMessage);
-                    reject();
-                }
-            );
+    async function init(userName: string) {
+
+        let memberData = await Controller.get(userName).catch((error) => {
+            error && alert(error.response.data.ExceptionMessage);
         });
 
-        awaiter.then(() => {
-            console.log('member init request done...');
-            EventBus.$emit('member-init-done');
-        });
+        if (memberData) {
+            member.userName = memberData.userName;
+            member.loginId = memberData.loginId;
+            member.age = memberData.age;
+            member.ip = memberData.ip;
+        }
+        
+        console.log('member init request done...');
+        EventBus.$emit('member-init-done');
+
     }
 
     @Component

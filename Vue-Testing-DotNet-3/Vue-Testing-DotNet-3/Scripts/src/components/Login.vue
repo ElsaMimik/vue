@@ -18,6 +18,7 @@
             </b-form-group>
         </b-form>
     </div>
+    
 </template>
 
 <script lang="ts">
@@ -36,7 +37,7 @@
         showAlert: boolean = false;
         errorMessage: string = '';
 
-        loginSubmit(event) {
+        async loginSubmit(event) {
 
             //stop default action for form submit
             event.preventDefault();
@@ -47,16 +48,16 @@
                 request.loginId = this.loginId;
                 request.password = this.password;
 
-                Controller.login(request, (data) => {
-                    if (data && data === 'success') {
+                await Controller.login(request).then((result) => {
+                    if (result) {
                         location.href = '/';
                         return;
                     }
                     this.errorMessage = 'LoginId or Password not match...';
                     this.showAlert = true;
-                }, (res) => {
-                    if (res && res.data && res.data.ExceptionMessage) {
-                        this.errorMessage = res.data.ExceptionMessage;
+                }).catch((error) => {
+                    if (error && error.response.data.ExceptionMessage) {
+                        this.errorMessage = error.response.data.ExceptionMessage;
                     }
                     else {
                         this.errorMessage = 'error occurred...';

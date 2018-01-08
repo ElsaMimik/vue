@@ -8,6 +8,7 @@ catch {
 }
 
 if ($result -ne 0) {
+    Write-Output "build fail, please check the project status"
     Exit 1
 }
 

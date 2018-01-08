@@ -12,11 +12,9 @@ class HttpModel {
         axios.defaults.baseURL = '/api/';
     }
 
-    request(config: AxiosRequestConfig, successCallback?: HttpCallback.Success, errorCallback?: HttpCallback.Error) {
-        return axios.create().request(config).then(
-            (response: AxiosResponse) => successCallback && successCallback(response.data, response),
-            (error: AxiosError) => errorCallback && errorCallback(error.response, error)
-        )
+    async request(config: AxiosRequestConfig): Promise<AxiosResponse> {
+        let result: AxiosResponse = await axios.create().request(config);
+        return result;
     }
 }
 

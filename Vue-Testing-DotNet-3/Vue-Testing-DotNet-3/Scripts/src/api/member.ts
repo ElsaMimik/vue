@@ -3,15 +3,21 @@ import handler from './base-handler'
 
 class MemberController {
 
-    get(userName: string, successCallback?: HttpCallback.Success, errorCallback?: HttpCallback.Error) {
+    async get(userName: string): Promise<Model.Member> {
         let config = {
             url: '/member/' + userName,
             method: 'get'
         };
-        return handler.request(config, successCallback, errorCallback);
+        let response = await handler.request(config);
+        let member = new Model.Member();
+        member.userName = response.data.UserName;
+        member.loginId = response.data.LoginId;
+        member.age = response.data.Age;
+        member.ip = response.data.Ip;
+        return member;
     }
 
-    login(request: Model.LoginRequest, successCallback?: HttpCallback.Success, errorCallback?: HttpCallback.Error) {
+    async login(request: Model.LoginRequest): Promise<boolean> {
         let config = {
             url: '/member/login',
             method: 'post',
@@ -20,7 +26,8 @@ class MemberController {
                 Password: request.password
             }
         };
-        return handler.request(config, successCallback, errorCallback);
+        var response = await handler.request(config);
+        return response.data && response.data === 'success';
     }
 }
 
