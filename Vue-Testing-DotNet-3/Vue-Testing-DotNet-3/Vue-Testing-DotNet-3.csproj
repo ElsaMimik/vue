@@ -665,7 +665,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\API\MemberApiController123.cs" />
+    <Compile Include="Controllers\API\MemberApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FilterAttributes\ScriptPathFilterAttribute.cs" />
     <Compile Include="Controllers\ReportController.cs" />
