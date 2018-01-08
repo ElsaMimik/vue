@@ -36,20 +36,18 @@
     //(response: any) => { ... }
     async function init(userName: string) {
 
-        let memberData = await Controller.get(userName).catch((error) => {
+        await Controller.get(userName).then((memberData) => {
+            if (memberData) {
+                member.userName = memberData.userName;
+                member.loginId = memberData.loginId;
+                member.age = memberData.age;
+                member.ip = memberData.ip;
+            }
+            console.log('member init request done...');
+            EventBus.$emit('member-init-done');
+        }).catch((error) => {
             error && alert(error.response.data.ExceptionMessage);
         });
-
-        if (memberData) {
-            member.userName = memberData.userName;
-            member.loginId = memberData.loginId;
-            member.age = memberData.age;
-            member.ip = memberData.ip;
-        }
-        
-        console.log('member init request done...');
-        EventBus.$emit('member-init-done');
-
     }
 
     @Component
@@ -73,8 +71,8 @@
         }
 
         @Watch('initValue', { immediate: true })
-        handler(newValue: string, oldValue: string) {
-            newValue && (newValue !== oldValue) && init(newValue);
+        async handler(newValue: string, oldValue: string) {
+            newValue && (newValue !== oldValue) && await init(newValue);
         }
 
     }
