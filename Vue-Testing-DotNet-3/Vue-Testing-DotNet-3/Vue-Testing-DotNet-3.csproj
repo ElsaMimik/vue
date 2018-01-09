@@ -668,7 +668,7 @@
     <Compile Include="Controllers\API\MemberApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FilterAttributes\ScriptPathFilterAttribute.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -951,6 +951,7 @@
     <Content Include="Scripts\vendors\bootstrap\scss\_variables.scss" />
     <Content Include="Views\Home\SumAmount.cshtml" />
     <Content Include="Scripts\src\components\SumAmount.vue" />
+    <Content Include="Views\Member\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

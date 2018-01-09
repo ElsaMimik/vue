@@ -6,11 +6,9 @@ using System.Web.Mvc;
 
 namespace Vue_Testing_DotNet_3.Controllers
 {
-    [RoutePrefix("api/report")]
-    public class ReportController : Controller
+    public class MemberController : Controller
     {
-        // GET: Report
-        [Route("")]
+        // GET: Member
         public ActionResult Index()
         {
             return View();

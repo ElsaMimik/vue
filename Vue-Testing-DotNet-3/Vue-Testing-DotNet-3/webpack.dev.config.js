@@ -8,7 +8,8 @@ module.exports = {
     entry: {
         home: './Scripts/src/home/index.ts',
         login: './Scripts/src/home/login.ts',
-        sumAmount: './Scripts/src/home/sumAmount.ts'
+        sumAmount: './Scripts/src/home/sumAmount.ts',
+        member: './Scripts/src/member/index.ts'
     },
     output: {
         path: path.resolve(__dirname, 'Bundle'),

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Vue_Testing_DotNet_3.Controllers.API
@@ -10,9 +12,12 @@ namespace Vue_Testing_DotNet_3.Controllers.API
     [RoutePrefix("api/member")]
     public class MemberApiController : ApiController
     {
-        [Route("{userName}")]
-        public object Get(string userName)
+        [Route("{userName}/profile")]
+        public async Task<object> Get(string userName, CancellationToken cancellationToken)
         {
+            //test async method
+            await Task.Delay(10, cancellationToken);
+
             return new
             {
                 UserName = userName,
@@ -22,9 +27,13 @@ namespace Vue_Testing_DotNet_3.Controllers.API
             };
         }
 
+        [HttpPost]
         [Route("login")]
-        public string Login(LoginRequest request)
+        public async Task<string> Login(LoginRequest request, CancellationToken cancellationToken)
         {
+            //test async method
+            await Task.Delay(10, cancellationToken);
+
             // login checking flow...
             if (request.LoginId == "exception")
             {
@@ -37,6 +46,63 @@ namespace Vue_Testing_DotNet_3.Controllers.API
 
             return "success";
             
+        }
+
+        [HttpGet]
+        [Route("listing")]
+        public async Task<object> Listing(CancellationToken cancellationToken)
+        {
+            //test async method
+            await Task.Delay(10, cancellationToken);
+
+            return new MemberModel[]
+            {
+                new MemberModel
+                {
+                    UserName = "AlphaNO1",
+                    MemberId = 1,
+                    Email = "test@123.com",
+                    LastLogin = DateTimeOffset.Now,
+                    RegistDate = DateTimeOffset.Now
+                },
+                new MemberModel
+                {
+                    UserName = "AlphaNO2",
+                    MemberId = 2,
+                    Email = "test@123.com",
+                    LastLogin = DateTimeOffset.Now,
+                    RegistDate = DateTimeOffset.Now
+                },
+                new MemberModel
+                {
+                    UserName = "AlphaNO3",
+                    MemberId = 3,
+                    Email = "test@123.com",
+                    LastLogin = DateTimeOffset.Now,
+                    RegistDate = DateTimeOffset.Now
+                },
+                new MemberModel
+                {
+                    UserName = "AlphaNO4",
+                    MemberId = 4,
+                    Email = "test@123.com",
+                    LastLogin = DateTimeOffset.Now,
+                    RegistDate = DateTimeOffset.Now
+                }
+            };
+        }
+
+        public class MemberModel
+        {
+            public string UserName { get; set; }
+
+            public int MemberId { get; set; }
+
+            public string Email { get; set; }
+
+            public DateTimeOffset LastLogin { get; set; }
+
+            public DateTimeOffset RegistDate { get; set; }
         }
 
         public class LoginRequest

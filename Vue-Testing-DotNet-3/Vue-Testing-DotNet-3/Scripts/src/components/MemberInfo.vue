@@ -21,8 +21,7 @@
 <script lang="ts">
 
     //reference component decorators
-    import Vue from 'vue'
-    import { Component, Prop, Watch } from 'vue-property-decorator'
+    import { Component, Prop, Watch, Vue } from 'vue-property-decorator'
     import Moment from 'moment'
     //EventBus is used to communicate between different module
     import EventBus from '../lib/event-bus'
@@ -30,7 +29,7 @@
     import * as Model from '../api/member-m'
     import Controller from '../api/member'
 
-    let member = new Model.Member();
+    let member = new Model.MemberProfile();
 
     //AxiosResponse can be replaced by any
     //(response: any) => { ... }
@@ -55,9 +54,8 @@
         @Prop({ default: '' })
         initValue: string;
 
-        date: any = Moment();
-        member: Model.Member = member;
-
+        date: Moment.Moment = Moment();
+        member: Model.MemberProfile = member;
         mounted () {
             setInterval(() => {
                 this.date = Moment();
@@ -73,7 +71,6 @@
         async handler(newValue: string, oldValue: string) {
             newValue && (newValue !== oldValue) && await init(newValue);
         }
-
     }
 
 </script>

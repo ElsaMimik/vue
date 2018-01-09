@@ -1,15 +1,17 @@
-﻿import * as Model from './member-m'
+﻿import Moment from 'moment'
+
+import * as Model from './member-m'
 import handler from './base-handler'
 
 class MemberController {
 
-    async get(userName: string): Promise<Model.Member> {
+    async get(userName: string): Promise<Model.MemberProfile> {
         let config = {
-            url: '/member/' + userName,
+            url: '/member/' + userName + '/profile',
             method: 'get'
         };
         let response = await handler.request(config);
-        let member = new Model.Member();
+        let member = new Model.MemberProfile();
         member.userName = response.data.UserName;
         member.loginId = response.data.LoginId;
         member.age = response.data.Age;
@@ -28,6 +30,29 @@ class MemberController {
         };
         var response = await handler.request(config);
         return response.data && response.data === 'success';
+    }
+
+    async listing(): Promise<Model.MemberInfo[]> {
+        let config = {
+            url: '/member/listing',
+            method: 'get'
+        };
+        var response = await handler.request(config);
+        if (response.data) {
+            let data = response.data;
+            let results: Model.MemberInfo[] = [];
+            for (let element of data) {
+                let info = new Model.MemberInfo();
+                info.userName = element.UserName;
+                info.memberId = element.MemberId;
+                info.email = element.Email;
+                info.lastLogin = Moment(element.LastLogin);
+                info.registDate = Moment(element.RegistDate);
+                results.push(element);
+            }
+            return results;
+        }
+        return new Array<Model.MemberInfo>();
     }
 }
 

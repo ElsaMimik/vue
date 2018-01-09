@@ -1,4 +1,6 @@
-﻿export class Member {
+﻿import { Moment } from 'moment'
+
+export class MemberProfile {
 
     userName: string;
     loginId: string;
@@ -16,4 +18,12 @@
 export class LoginRequest {
     loginId: string = '';
     password: string = '';
+}
+
+export class MemberInfo {
+    userName: string;
+    memberId: number;
+    email: string;
+    lastLogin: Moment;
+    registDate: Moment;
 }
