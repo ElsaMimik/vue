@@ -60,3 +60,7 @@ please install the following items to build the environment:
     ```
     "compileOnSave": false
     ```
+4. webpack config ignore Moment locale file
+```
+new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+```

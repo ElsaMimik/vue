@@ -13,15 +13,42 @@
     <!-- Bootstrap -->
     <link href="~/Scripts/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Scripts/vendors/bootstrap-vue/dist/bootstrap-vue.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .btn-toolbar {
+            margin: 1rem -15px;
+            padding: 1.5rem;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            border-width: .2rem;
+        }
+        .table-wrapper {
+            border: solid #f7f7f9;
+            margin: 1rem -15px;
+            padding: 1.5rem;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            border-width: .2rem;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <div class="btn-group" role="group" aria-label="Functional Box">
-            <button type="button" class="btn btn-secondary" v-on:click="searchClick">Search</button>
-            <button type="button" class="btn btn-secondary">Add</button>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="Functional Box">
+                <button type="button" class="btn btn-secondary" v-on:click="searchClick">Search</button>
+                <button type="button" class="btn btn-secondary" v-on:click="addClick">Add</button>
+            </div>
         </div>
-        <div id="member-app"></div>
+        <div>
+            <div id="member-listing"></div>
+            <div id="member-new-form"></div>
+        </div>
     </div>
     <script src="@(ViewBag.ScriptPathPrefix)/Bundle/member.js"></script>
 </body>
 </html>
+
+

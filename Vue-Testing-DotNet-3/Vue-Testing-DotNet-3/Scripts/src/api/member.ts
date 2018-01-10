@@ -52,7 +52,7 @@ class MemberController {
             }
             return results;
         }
-        return new Array<Model.MemberInfo>();
+        return [];
     }
 }
 

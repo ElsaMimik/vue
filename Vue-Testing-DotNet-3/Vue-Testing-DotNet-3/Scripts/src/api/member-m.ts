@@ -27,3 +27,8 @@ export class MemberInfo {
     lastLogin: Moment;
     registDate: Moment;
 }
+
+export class NewMemberRequest {
+    userName: string;
+    email: string;
+}

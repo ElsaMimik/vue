@@ -109,6 +109,7 @@ module.exports = {
             uglifyOptions: {
                 compress: true
             }
-        })
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ]
 }

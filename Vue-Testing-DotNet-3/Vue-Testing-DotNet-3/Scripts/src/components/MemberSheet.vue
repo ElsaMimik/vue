@@ -1,5 +1,8 @@
 <template>
-    <b-table striped hover :items="members"></b-table>
+    <div class="table-wrapper">
+        <b-table striped hover :items="members"></b-table>
+        <b-alert variant="dark" :show="members.length === 0">No Records</b-alert>
+    </div>
 </template>
 
 <script lang="ts">
@@ -39,3 +42,4 @@
     }
 
 </script>
+
