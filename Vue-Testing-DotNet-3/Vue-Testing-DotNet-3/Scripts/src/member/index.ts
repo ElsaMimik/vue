@@ -78,7 +78,6 @@ let baseComponent = new Vue({
 });
 
 let hub = $.hubConnection(document.location.protocol + '//' + document.location.host);
-
 let proxy = hub.createHubProxy('MemberHub');
 
 proxy.on('newNotify', (data) => {
