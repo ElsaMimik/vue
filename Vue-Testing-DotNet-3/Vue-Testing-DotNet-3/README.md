@@ -64,3 +64,38 @@ please install the following items to build the environment:
 ```
 new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 ```
+5. global jQuery in Vue
+```
+ plugins: [
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        'root.jQuery': 'jquery'
+    })
+ ]
+```
+6. to use jQuery and singalr in Vue and TypeScript
+    6.1. install node packages
+    ```
+    npm install jquery signalr --save
+    npm install @types/jquery --save-dev
+    npm install @types/signalr --save-dev
+    ```
+    6.2. then import in ts or vue file
+    ```
+    import 'signalr'
+
+    let hub = $.hubConnection(document.location.protocol + '//' + document.location.host);
+    let proxy = hub.createHubProxy('MemberHub');
+
+    proxy.on('newNotify', (data) => {
+        listingComponent.search();
+        console.log('receive message from signalr hub MemberHub-newNotify...');
+    });
+
+    hub.start().done(() => {
+        proxy.invoke('joinGroup', 'member-room');
+        console.log('signalr connect success...');
+    });
+    ```

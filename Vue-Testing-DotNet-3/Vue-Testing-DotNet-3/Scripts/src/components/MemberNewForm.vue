@@ -43,7 +43,6 @@
             
             Controller.put(this.form).then(() => {
                 console.log('new member success');
-                EventBus.$emit('new-member-success');
             }).catch((error) => {
                 alert(error.response.data.ExceptionMessage);
             });

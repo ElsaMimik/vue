@@ -3,7 +3,6 @@ import EventBus from '../lib/event-bus'
 import BootstrapVue from 'bootstrap-vue'
 import MemberSheet from '@/components/MemberSheet.vue'
 import MemberNewForm from '@/components/MemberNewForm.vue'
-
 import 'signalr'
 
 
