@@ -104,6 +104,12 @@ module.exports = {
         contentBase: '/Scripts'
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'root.jQuery': 'jquery'
+        }),
         new UglifyJsPlugin({
             sourceMap: true,
             uglifyOptions: {

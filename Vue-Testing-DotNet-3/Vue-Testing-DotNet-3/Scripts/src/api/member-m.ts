@@ -31,4 +31,8 @@ export class MemberInfo {
 export class NewMemberRequest {
     userName: string;
     email: string;
+    isException: number;
+    constructor() {
+        this.isException = 0;
+    }
 }

@@ -54,6 +54,19 @@ class MemberController {
         }
         return [];
     }
+
+    async put(request: Model.NewMemberRequest): Promise<void> {
+        let config = {
+            url: '/member',
+            method: 'put',
+            data: {
+                UserName: request.userName,
+                Email: request.email,
+                NeedException: request.isException
+            }
+        };
+        await handler.request(config);
+    }
 }
 
 const model = new MemberController();

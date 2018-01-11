@@ -31,11 +31,14 @@
     "axios": "^0.17.1",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
+    "signalr": "^2.2.2",
     "signalr-no-jquery": "^0.1.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.2.17",
+    "@types/signalr": "^2.2.35",
     "animate.css": "^3.5.2",
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.22.1",

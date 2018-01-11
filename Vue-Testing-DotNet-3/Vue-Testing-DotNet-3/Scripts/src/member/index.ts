@@ -4,6 +4,9 @@ import BootstrapVue from 'bootstrap-vue'
 import MemberSheet from '@/components/MemberSheet.vue'
 import MemberNewForm from '@/components/MemberNewForm.vue'
 
+import 'signalr'
+
+
 Vue.use(BootstrapVue);
 
 function cycleNumber(num, max, min) {
@@ -11,19 +14,7 @@ function cycleNumber(num, max, min) {
     return currentValue === 0 ? min : currentValue;
 }
 
-new Vue({
-    el: 'div.btn-toolbar',
-    methods: {
-        searchClick(event) {
-            EventBus.$emit('searchClick');
-        },
-        addClick(event) {
-            EventBus.$emit('toggleForm', 'open');
-        }
-    }
-});
-
-new Vue({
+let listingComponent = new Vue({
     el: '#member-listing',
     template: '<member-sheet :trigger-search="triggerSearch" />',
     props: {
@@ -32,17 +23,17 @@ new Vue({
             default: 0
         }
     },
+    methods: {
+        search() {
+            this.triggerSearch = cycleNumber(this.triggerSearch, 10, 1);
+        }
+    },
     components: {
         MemberSheet
-    },
-    mounted() {
-        EventBus.$on('searchClick', () => {
-            this.triggerSearch = cycleNumber(this.triggerSearch, 10, 1);
-        });
     }
 });
 
-new Vue({
+let newComponent = new Vue({
     el: '#member-new-form',
     template: '<member-new-form :triggerOpen="open" :triggerClose="close" />',
     props: {
@@ -58,8 +49,8 @@ new Vue({
     components: {
         MemberNewForm
     },
-    mounted() {
-        EventBus.$on('toggleForm', (command) => {
+    methods: {
+        toggle(command) {
             switch(command) {
                 case 'open':
                     this.open = cycleNumber(this.open, 10, 1);
@@ -70,6 +61,32 @@ new Vue({
                 default:
                     break;
             }
-        })
+        }
     }
+});
+
+let baseComponent = new Vue({
+    el: 'div.btn-toolbar',
+    methods: {
+        searchClick(event) {
+            listingComponent.search();
+        },
+        addClick(event) {
+            newComponent.toggle('open');
+        }
+    }
+});
+
+let hub = $.hubConnection(document.location.protocol + '//' + document.location.host);
+
+let proxy = hub.createHubProxy('MemberHub');
+
+proxy.on('newNotify', (data) => {
+    listingComponent.search();
+    console.log('receive message from signalr hub MemberHub-newNotify...');
+});
+
+hub.start().done(() => {
+    proxy.invoke('joinGroup', 'member-room');
+    console.log('signalr connect success...');
 });

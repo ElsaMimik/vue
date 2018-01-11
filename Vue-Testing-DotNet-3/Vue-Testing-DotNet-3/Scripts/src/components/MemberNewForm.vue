@@ -7,6 +7,9 @@
             <b-form-group label="Email address:" label-for="email" description="We'll never share your email with anyone else.">
                 <b-form-input id="email" type="email" v-model="form.email" required placeholder="Enter email"></b-form-input>
             </b-form-group>
+            <b-form-group label="Need Exception" label-for="exception">
+                <b-form-input id="exception" type="text" v-model.number="form.isException"></b-form-input>
+            </b-form-group>
             <b-button type="submit" variant="primary">Submit</b-button>
             <b-button type="reset" variant="second">Reset</b-button>
             <b-button type="button" variant="secondary" @click="onCancel">Cancel</b-button>
@@ -37,13 +40,21 @@
         triggerClose: number;
 
         onSubmit(event) {
-            this.show = false;
+            
+            Controller.put(this.form).then(() => {
+                console.log('new member success');
+                EventBus.$emit('new-member-success');
+            }).catch((error) => {
+                alert(error.response.data.ExceptionMessage);
+            });
+            
             event.preventDefault();
         }
 
         onReset(event) {
             this.form.userName = '';
             this.form.email = '';
+            this.form.isException = 0;
             event.preventDefault();
         }
 
