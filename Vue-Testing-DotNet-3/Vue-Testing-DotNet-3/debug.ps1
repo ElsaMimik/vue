@@ -30,7 +30,18 @@ do {
 
 } while ($iisexpress -or $loopCount > 10)
 
-$Path = Get-Location
-$ConfigPath = "$Path\applicationhost.config"
-Start-Process -WorkingDirectory "C:\Program Files\IIS Express" -ArgumentList "/config:$ConfigPath" iisexpress.exe -PassThru -WindowStyle Hidden
+$path = Get-Location
+cd..
+$upPath = Get-Location
+$hostPath = "$upPath\.vs\config\applicationhost.config"
+
+if (![System.IO.File]::Exists($hostPath)) {
+    Write-Output "error!! no found applicationhost.config for iisexpress..."
+    Write-Output "error!! please open with visual studio 2017 and debug first to create applicationhost.config..."
+    Exit 3
+}
+
+Set-Location $path
+Start-Process -WorkingDirectory "C:\Program Files\IIS Express" -ArgumentList "/config:$hostPath" iisexpress.exe -PassThru -WindowStyle Hidden
+
 #& "C:\Program Files\IIS Express\iisexpress.exe" /config:$ConfigPath
