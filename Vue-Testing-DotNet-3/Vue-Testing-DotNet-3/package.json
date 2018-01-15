@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "graphql": "^0.12.3",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
     "signalr": "^2.2.2",

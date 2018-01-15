@@ -32,7 +32,7 @@ let listingComponent = new Vue({
     }
 });
 
-let newComponent = new Vue({
+let formComponent = new Vue({
     el: '#member-new-form',
     template: '<member-new-form :triggerOpen="open" :triggerClose="close" />',
     props: {
@@ -71,7 +71,7 @@ let baseComponent = new Vue({
             listingComponent.search();
         },
         addClick(event) {
-            newComponent.toggle('open');
+            formComponent.toggle('open');
         }
     }
 });
@@ -80,7 +80,7 @@ let hub = $.hubConnection(document.location.protocol + '//' + document.location.
 let proxy = hub.createHubProxy('MemberHub');
 
 proxy.on('newNotify', (data) => {
-    listingComponent.search();
+    listingComponent['search']();
     console.log('receive message from signalr hub MemberHub-newNotify...');
 });
 

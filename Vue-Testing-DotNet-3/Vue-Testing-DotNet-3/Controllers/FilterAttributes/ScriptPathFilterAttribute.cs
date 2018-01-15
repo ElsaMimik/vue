@@ -15,7 +15,7 @@ namespace Vue_Testing_DotNet_3.Controllers
 
 #if CONFIG == Debug
             filterContext.Controller.ViewBag.ScriptPathPrefix = "http://localhost:9090";
-#endif
+#endif            
 
             base.OnActionExecuted(filterContext);
         }

@@ -62,9 +62,11 @@ please install the following items to build the environment:
     ```
 4. webpack config ignore Moment locale file
 ```
-new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+plugins: [
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+]
 ```
-5. global jQuery in Vue
+5. global jQuery in Vue for use signalr
 ```
  plugins: [
     new webpack.ProvidePlugin({
@@ -75,7 +77,7 @@ new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     })
  ]
 ```
-6. to use jQuery and singalr in Vue and TypeScript
+6. to use jQuery and singalr in Vue and TypeScript -- [link](https://dotblogs.com.tw/kinanson/2017/08/17/120457)
     6.1. install node packages
     ```
     npm install jquery signalr --save
@@ -98,4 +100,17 @@ new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         proxy.invoke('joinGroup', 'member-room');
         console.log('signalr connect success...');
     });
+    ```
+7. before deployment, please make sure the size of bundled javascript in properly range, you can change devTool setting to check -- [link](https://webpack.js.org/configuration/devtool/)
+8. "vue-property-decorator" is Typescript package for Vue Component implement -- [link](https://github.com/kaorun343/vue-property-decorator)
+    8.1. install command
+    ```
+    npm install vue-class-component --save
+    npm install vue-property-decorator --save
+    ```
+    8.2. tsconfig.json
+    ```
+    "compilerOptions": {
+        "experimentalDecorators": true
+    }
     ```
