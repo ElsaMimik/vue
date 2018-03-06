@@ -97,6 +97,7 @@ module.exports = {
         ]
     },
     devtool: 'cheap-module-eval-source-map',
+    mode: 'development',
     devServer: {
         host: 'localhost',
         port: 9090,
